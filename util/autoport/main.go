@@ -364,6 +364,11 @@ func MatchDev(dev *DevTreeNode) {
 	if dev.PCIController {
 		for slot, slotDev := range unmatchedPCIDevices {
 			if slot.Bus == dev.ChildPCIBus {
+				// protect against endless loops for some weird devices
+				if dev.Bus == slot.Bus && dev.Dev == slot.Dev && dev.Func == slot.Func {
+					fmt.Println("WARN: Skipping device/child combo that ends up in an endless loop! (bus, dev, func):", dev.Bus, dev.Dev, dev.Func)
+					continue
+				}
 				MatchDev(&slotDev)
 				dev.Children = append(dev.Children, slotDev)
 				delete(unmatchedPCIDevices, slot)
