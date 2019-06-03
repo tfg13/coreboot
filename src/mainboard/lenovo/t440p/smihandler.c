@@ -23,6 +23,7 @@
 #include <delay.h>
 #include <southbridge/intel/lynxpoint/pch.h>
 
+
 #define GPE_EC_SCI	1
 /* FIXME: check this */
 #define GPE_EC_WAKE	13
@@ -71,7 +72,8 @@ int mainboard_smi_apmc(u8 data)
 		/* use 0x1600/0x1604 to prevent races with userspace */
 		ec_set_ports(0x1604, 0x1600);
 		/* route EC_SCI to SCI */
-		gpi_route_interrupt(GPE_EC_SCI, GPI_IS_SCI);
+		// TODO
+		//gpi_route_interrupt(GPE_EC_SCI, GPI_IS_SCI);
 		/* discard all events, and enable attention */
 		ec_write(0x80, 0x01);
 		break;
@@ -80,7 +82,8 @@ int mainboard_smi_apmc(u8 data)
 		   provide a EC query function */
 		ec_set_ports(0x66, 0x62);
 		/* route EC_SCI to SMI */
-		gpi_route_interrupt(GPE_EC_SCI, GPI_IS_SMI);
+		// TODO
+		//gpi_route_interrupt(GPE_EC_SCI, GPI_IS_SMI);
 		/* discard all events, and enable attention */
 		ec_write(0x80, 0x01);
 		break;
@@ -97,7 +100,8 @@ void mainboard_smi_sleep(u8 slp_typ)
 		/* If EC wake events are enabled, enable wake on EC WAKE GPE.  */
 		if (ec_wake & 0x14) {
 			/* Redirect EC WAKE GPE to SCI.  */
-			gpi_route_interrupt(GPE_EC_WAKE, GPI_IS_SCI);
+			// TODO
+			//gpi_route_interrupt(GPE_EC_WAKE, GPI_IS_SCI);
 		}
 	}
 }

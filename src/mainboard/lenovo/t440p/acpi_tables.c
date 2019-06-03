@@ -16,8 +16,23 @@
  */
 
 #include <southbridge/intel/lynxpoint/nvs.h>
+#include "thermal.h"
 
-/* FIXME: check this function.  */
+static void acpi_update_thermal_table(global_nvs_t *gnvs)
+{
+	gnvs->tmps = CTDP_SENSOR_ID;
+
+	gnvs->f1of = CTDP_NOMINAL_THRESHOLD_OFF;
+	gnvs->f1on = CTDP_NOMINAL_THRESHOLD_ON;
+
+	gnvs->f0of = CTDP_DOWN_THRESHOLD_OFF;
+	gnvs->f0on = CTDP_DOWN_THRESHOLD_ON;
+
+	gnvs->tcrt = CRITICAL_TEMPERATURE;
+	gnvs->tpsv = PASSIVE_TEMPERATURE;
+	gnvs->tmax = MAX_TEMPERATURE;
+}
+
 void acpi_create_gnvs(global_nvs_t *gnvs)
 {
 	/* Disable USB ports in S3 by default */
@@ -31,6 +46,5 @@ void acpi_create_gnvs(global_nvs_t *gnvs)
 	// the lid is open by default.
 	gnvs->lids = 1;
 
-	gnvs->tcrt = 100;
-	gnvs->tpsv = 90;
+	acpi_update_thermal_table(gnvs);
 }

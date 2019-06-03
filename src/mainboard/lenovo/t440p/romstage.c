@@ -49,7 +49,7 @@ void mainboard_romstage_entry(unsigned long bist)
 		.mchbar = (uintptr_t)DEFAULT_MCHBAR,
 		.dmibar = (uintptr_t)DEFAULT_DMIBAR,
 		.epbar = DEFAULT_EPBAR,
-		.pciexbar = DEFAULT_PCIEXBAR,
+		.pciexbar = CONFIG_MMCONF_BASE_ADDRESS,
 		.smbusbar = SMBUS_IO_BASE,
 		.wdbbar = 0x4000000,
 		.wdbsize = 0x1000,
@@ -58,9 +58,9 @@ void mainboard_romstage_entry(unsigned long bist)
 		.pmbase = DEFAULT_PMBASE,
 		.gpiobase = DEFAULT_GPIOBASE,
 		.temp_mmio_base = 0xfed08000,
-		.system_type = 1, /* desktop/server, FIXME: check this */
+		.system_type = 0, /* MOBILE */
 		.tseg_size = CONFIG_SMM_TSEG_SIZE,
-		.spd_addresses = { 0xa0, 0xa2, 0xa4, 0xa6 }, /* FIXME: check this */
+		.spd_addresses = { 0xa0, 0x0, 0x0, 0x0 },
 		.ec_present = 0,
 		.dimm_channel0_disabled = 0, /* FIXME: leave channel 0 enabled */
 		.dimm_channel1_disabled = 0, /* FIXME: leave channel 1 enabled */

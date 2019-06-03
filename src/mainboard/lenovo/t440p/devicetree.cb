@@ -120,6 +120,9 @@ chip northbridge/intel/haswell # FIXME: check gfx.ndid and gfx.did
 						io 0x66 = 0x1604
 					end
 				end
+				chip drivers/pc80/tpm
+					device pnp 0c31.0 on end
+				end
 			end
 			device pci 1f.2 on # SATA Controller 1
 				subsystemid 0x17aa 0x220e

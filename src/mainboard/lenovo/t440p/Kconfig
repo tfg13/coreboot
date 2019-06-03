@@ -15,10 +15,18 @@ config BOARD_SPECIFIC_OPTIONS
 	select SOUTHBRIDGE_INTEL_LYNXPOINT
 	select SYSTEM_TYPE_LAPTOP
 	select TSC_MONOTONIC_TIMER
+	select H8_HAS_BAT_TRESHOLDS_IMPL
+    select NO_UART_ON_SUPERIO
+    select MAINBOARD_HAS_LPC_TPM
+    select MAINBOARD_HAS_TPM1
+#    select DRIVERS_LENOVO_HYBRID_GRAPHICS
+    select GFX_GMA_INTERNAL_IS_LVDS
+    select INTEL_GMA_HAVE_VBT
+    select MAINBOARD_USES_IFD_GBE_REGION
 
 config MAINBOARD_DIR
 	string
-	default lenovo/thinkpad_t440p
+	default lenovo/t440p
 
 config GFX_GMA_CPU_VARIANT
 	string
