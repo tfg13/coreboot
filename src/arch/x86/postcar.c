@@ -29,9 +29,11 @@ __weak void late_car_teardown(void) { /* do nothing */ }
 
 void main(void)
 {
+	printk(BIOS_DEBUG, "DEBUG: Hello from very early postcar!");
 	late_car_teardown();
 
 	console_init();
+	printk(BIOS_DEBUG, "DEBUG: Hello from early postcar, after console_init!");
 
 	/* Recover cbmem so infrastruture using it is functional. */
 	cbmem_initialize();

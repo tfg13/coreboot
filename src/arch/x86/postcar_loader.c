@@ -178,5 +178,6 @@ void run_postcar_phase(struct postcar_frame *pcf)
 	/* As postcar exist, it's end of romstage here */
 	timestamp_add_now(TS_END_ROMSTAGE);
 
+	printk(BIOS_DEBUG, "DEBUG: All loading complete, jumping into postcar now!\n");
 	prog_run(&prog);
 }
