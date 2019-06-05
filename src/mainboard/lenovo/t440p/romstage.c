@@ -58,12 +58,12 @@ void mainboard_romstage_entry(unsigned long bist)
 		.pmbase = DEFAULT_PMBASE,
 		.gpiobase = DEFAULT_GPIOBASE,
 		.temp_mmio_base = 0xfed08000,
-		.system_type = 0, /* MOBILE */
+		.system_type = 0,/* MOBILE */
 		.tseg_size = CONFIG_SMM_TSEG_SIZE,
-		.spd_addresses = { 0xa0, 0xa2, 0x0, 0x0 },
+		.spd_addresses = { 0xa0, 0x00, 0xa2, 0x0 },
 		.ec_present = 0,
-		.dimm_channel0_disabled = 0, /* FIXME: leave channel 0 enabled */
-		.dimm_channel1_disabled = 0, /* FIXME: leave channel 1 enabled */
+		.dimm_channel0_disabled = 2, /* FIXME: leave channel 0 enabled */
+		.dimm_channel1_disabled = 2, /* FIXME: leave channel 1 enabled */
 		.max_ddr3_freq = 1600,
 		.usb2_ports = {
 			/* Length, Enable, OCn#, Location */
